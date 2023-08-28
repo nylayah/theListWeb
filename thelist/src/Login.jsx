@@ -2,6 +2,9 @@
 
 export const Login = () => (
   return {
-    <>Login</>
+    <form>
+      <Label for = "username">username</Label>
+      <input type = "username" placeholder = "yahoo335" />
+    <form/>
   }
 )
