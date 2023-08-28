@@ -1,25 +1,21 @@
 import './App.css';
-import React, {useState} from React;
+import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {Login} from './Login';
 import {Register} from './Register';
-import Home from '../pages';
-import ManageListPage from '../pages';
-import JoinListPage from '../pages'
+import HomePage from './pages/Home';
+import ManageListPage from './pages/ManageList';
+import JoinListPage from './pages/JoinList'
 
 function App() {
-  const [currentForm, setCurrentForm] = useState('login');
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  }
+  
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route index element = {<Home/>}/>
-          <Route path="/home" element = {<Home/>}/>
-          <Route path="/managelistpage" element = {<CreateListPage/>}/>
+          <Route index element = {<HomePage/>}/>
+          <Route path="/home" element = {<HomePage/>}/>
+          <Route path="/managelistpage" element = {<ManageListPage/>}/>
           <Route path="/joinlistpage" element = {<JoinListPage/>}/>
           <Route path="/login" element = {Login}/>
           <Route path="/register" element = {Register}/>

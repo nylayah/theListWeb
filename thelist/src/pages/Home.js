@@ -1,7 +1,9 @@
 import Header from '../components/Header';
+import {useNavigate} from "react-router-dom";
 
 
 export default function HomePage() {
+    let navigate = useNavigate();
     return (
         <div>
             <Header/>

@@ -1,9 +1,13 @@
+import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 
 
 export const Register = (props) => {
   const [phonenumber, setPhoneNumber] = useState('');
   const [username, setUsername] = useState('');
   const [passcode, setPasscode] = useState('');
+
+  let navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();

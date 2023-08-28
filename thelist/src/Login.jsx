@@ -15,10 +15,10 @@ export const Login = (props) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Label htmlfor = "username">username</Label>
+        <label htmlfor = "username">username</label>
         <input value = {username} onChange={(e) => setUsername(e.target.value)} type = "username" placeholder = "yahoo335" id = "username" name = "username" />
 
-        <Label htmlfor = "passcode">passcode</Label>
+        <label htmlfor = "passcode">passcode</label>
         <input value = {passcode} onChange={(e) => setPasscode(e.target.value)} type = "password" placeholder = "*****" id = "passcode" name = "passcode" />
 
         <button onClick = {() => {
