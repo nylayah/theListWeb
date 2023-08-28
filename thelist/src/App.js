@@ -1,18 +1,11 @@
 import './App.css';
+import {Login} from './Login';
+import {Register} from './Register';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header" display="flex" >
-        <p>
-          theList
-        </p>
-        {/* Show the current user logged in in the top right hand corner of the screen. Should be clickable to go to the user's profile page. */}
-        <p>
-          UserName
-        </p>
-      </header>
-    </div>
+    <div className = "App">
+      <Login/>
   );
 }
 
