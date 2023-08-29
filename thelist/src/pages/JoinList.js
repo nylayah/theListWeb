@@ -36,4 +36,4 @@ export default function JoinListPage() {
 
 const joinContainer = {display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh", padding:'5%', backgroundColor: colors.primary, color: colors.secondary, fontSize: "1.5rem"};
 const navButton ={backgroundColor: colors.medium, color: colors.secondary, fontSize: "1.5rem", borderRadius: 10, padding: 10, margin: 10, width: "60%"}
-const inputStyle = {backgroundColor: 'white', color: colors.secondary, fontSize: "1.5rem", borderRadius: 10, padding: 10, margin: 10, width: "60%", alignItems: "center", justifyContent: "center"}
+const inputStyle = {backgroundColor: 'white', color: colors.secondary, fontSize: "1.5rem", borderRadius: 10, padding: 10, margin: 10, width: "60%", alignItems: "center", justifyContent: "center", alignSelf: "center"}

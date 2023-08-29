@@ -23,7 +23,7 @@ export default function Header() {
     );
 };
 
-const container = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 1rem', height: '10vh', backgroundColor: colors.primary, color: colors.secondary, fontSize: '1.5rem' };
+const container = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 1rem', height: '10vh', backgroundColor: colors.primary, color: colors.secondary, fontSize: '1.5rem', borderBottom: '1px solid #ccc' };
 const switcher = { position: 'relative', display: 'inline-block', width: '60px', height: '34px'};
 const checkboxStyle = { display: 'flex', flexDirection:'row', justifyContent: 'center', alignItems: 'center'};
 const inputStyle = { width: '0', height: '0', visibility: 'hidden', display: 'none'};

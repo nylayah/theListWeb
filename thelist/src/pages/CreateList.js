@@ -1,19 +1,33 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import {v4 as uuidv4} from 'uuid';
 import Header from '../components/Header';
 import colors from '../components/colors';
 import {useNavigate} from "react-router-dom";
 import {EditListItem} from '../components/ListItem';
+import {addDoc, collection} from 'firebase/firestore';
+import {db,auth} from '../firebase-config';
 
-export let items;
 uuidv4();
-
-
-export default function ManageListPage() {
+export default function CreateListPage({isAuth}) {
     const navigate = useNavigate();
+    //item to be added to list
     const [value, setValue] = useState('');
+    //list of items
     const [items, setItems] = useState([]);
+    //list to be added to database
+    const [list, setList] = useState([]);
+    const ListsCollectionsRef = collection(db, 'Lists');
+    const [listname, setListName] = useState('');
     
+    const createList = async () => {
+        setListName(listname);
+        setList(list);
+        await addDoc(ListsCollectionsRef, {
+            ListName: listname, 
+            ListItems: items, 
+            owner:{name: auth.currentUser.displayName}});
+        navigate('/home');
+    }
     const addItem = item => {
         setItems([...items, {id: uuidv4(), item: item ,points: 0 }])
     }
@@ -22,12 +36,23 @@ export default function ManageListPage() {
         addItem(value);
         setValue('');
     }
+    useEffect(() => {
+        if (isAuth === false){
+            navigate('/login');
+        }
+    }, [])
+
     return (
         <div>
             <Header/>
             <div style={wholePage}>
-            <h2>Manage Your List</h2>
+            <h2>Create A List</h2>
             <form style={inputContainer} onSubmit={handleSubmit}>
+                <input style={inputStyle}
+                    type='text' 
+                    value = {listname}
+                    placeholder='List Name'
+                    onChange={(e) => setListName(e.target.value)}/>
                 <input style = {inputStyle} type='text' 
                 value = {value}
                 placeholder='List Item'
@@ -40,9 +65,7 @@ export default function ManageListPage() {
                 <EditListItem item ={item.item} points = {item.points}/>
             ))}
             </div>
-            <button style = {navButton} onClick = {() => {
-            navigate("/home")
-            }}>Confirm</button>
+            <button style = {navButton} onClick = {createList}>Create List</button>
             </div>
         </div>
     )

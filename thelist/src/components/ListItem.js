@@ -2,13 +2,6 @@ import React from 'react'
 import colors from '../components/colors'
 
 function EditListItem(props){
-    let increasePoints = () => {
-        props.points += 1;
-    }
-    let decreasePoints = () => {
-        props.points -= 1;
-    }
-    
     return (
         <div style={itemContainer}>
             <div style={rank}> 
@@ -17,8 +10,8 @@ function EditListItem(props){
             <p style={itemText}>{props.item}</p>
             <div style = {buttonContainer}>
                 <button style={buttons}>edit</button>
-                <button onClick= {increasePoints()} style={buttons}> ↑ </button>
-                <button onClick= {decreasePoints()} style={buttons}> ↓ </button>
+                <button style={buttons}> ↑ </button>
+                <button style={buttons}> ↓ </button>
             </div>
         </div>
     )
@@ -35,6 +28,17 @@ function ViewListItem(props){
         </div>
     )
 }
+function ListPreview(props){
+    return (
+        <div style={listContainer}>
+            <div>
+                <p style={itemText}>{props.listName}</p>
+                <p style={subText}> {props.owner} </p>
+                
+            </div>
+        </div>
+    )
+}
 
 const itemContainer = {
     display: 'flex',
@@ -42,17 +46,31 @@ const itemContainer = {
     backgroundColor: colors.light,
     flexDirection: 'row',
     padding: '5%',
-    width:"90%",
+    width:"85%",
     justifyContent: 'space-between',
     borderRadius: 10,
     borderWidth: "medium",
     borderColor: colors.dark,
-    
-
+}
+const listContainer = {
+    display: 'flex',
+    alignItems: 'flex-start',
+    backgroundColor: colors.light,
+    flexDirection: 'column',
+    width:"85%",
+    padding: '5%',
+    justifyContent: 'space-between',
+    borderRadius: 10,   
+    borderWidth: "medium",
+    borderColor: colors.dark,
 }
 const itemText = {
     fontSize: '1.5rem',
     color: colors.dark
+}
+const subText = {
+    fontSize: '1rem',
+    color: 'gray'
 }
 const rankText = {
     fontSize: '1.5rem',
@@ -85,4 +103,4 @@ const buttons= {
     width: '50%'
 
 }
-export {EditListItem, ViewListItem};
+export {EditListItem, ViewListItem, ListPreview};
