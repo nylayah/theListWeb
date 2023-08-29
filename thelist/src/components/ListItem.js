@@ -1,16 +1,37 @@
 import React from 'react'
 import colors from '../components/colors'
 
-export default function ListItem({value}){
+function EditListItem(props){
+    let increasePoints = () => {
+        props.points += 1;
+    }
+    let decreasePoints = () => {
+        props.points -= 1;
+    }
+    
     return (
         <div style={itemContainer}>
-            <div style={rank}> 0 </div>
-            <p style={itemText}>{value}</p>
+            <div style={rank}> 
+                <p>{props.points}</p>
+            </div>
+            <p style={itemText}>{props.item}</p>
             <div style = {buttonContainer}>
                 <button style={buttons}>edit</button>
-                <button> ↑ </button>
-                <button> ↓ </button>
+                <button onClick= {increasePoints()} style={buttons}> ↑ </button>
+                <button onClick= {decreasePoints()} style={buttons}> ↓ </button>
             </div>
+        </div>
+    )
+}
+
+function ViewListItem(props){
+    return (
+        <div style={itemContainer}>
+            <div style={rank}> 
+                <p style={rankText}> {props.points} </p>
+            </div>
+            <p style={itemText}>{props.item}</p>
+           
         </div>
     )
 }
@@ -20,7 +41,7 @@ const itemContainer = {
     alignItems: 'center',
     backgroundColor: colors.light,
     flexDirection: 'row',
-    padding: 2,
+    padding: '5%',
     width:"90%",
     justifyContent: 'space-between',
     borderRadius: 10,
@@ -31,7 +52,11 @@ const itemContainer = {
 }
 const itemText = {
     fontSize: '1.5rem',
-    color: colors.secondary
+    color: colors.dark
+}
+const rankText = {
+    fontSize: '1.5rem',
+    color: colors.light
 }
 const rank = {
     fontSize: '1.5rem',
@@ -39,7 +64,7 @@ const rank = {
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1/3,
+    flex: 1/4,
     display: 'flex',
 }
 const buttonContainer = {   
@@ -47,11 +72,17 @@ const buttonContainer = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    height: '100%',
+    width: '33%'
 
 }
 const buttons= {
     backgroundColor: colors.dark,
     color: colors.secondary,
     borderRadius: 10,
+    padding: 10,
+    height: '100%',
+    width: '50%'
 
 }
+export {EditListItem, ViewListItem};
